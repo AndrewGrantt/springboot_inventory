@@ -214,12 +214,161 @@ public class shopController {
 
 ```
 
+### Step 2.5: HTML files
 
+Create "index.html" under "src/resources/templates"
 
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopAPP</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</head>
+<body> 
 
+<div class="container"><br/>
+    <div class="alert alert-success">
+        <strong>Inventory System</strong>
+    </div>
+</div>
 
+<div class="container">
+    <form th:action="@{/add}" method="post" th:object="${shopModel}">
+                <div class="form-group">
+                    <label for="name">Item</label>
+                    <input type="text" class="form-control" required th:field="*{item}" 
+                           placeholder="Enter Item" size="10">
+                </div>
+                <div class="form-group">
+                    <label for="name">Price</label>
+                    <input type="number" class="form-control" required th:field="*{price}"
+                           placeholder="Enter Price" size="10">
+                </div>
+                <br>
+				<button type="submit" class="btn btn-primary">Add One Item</button>
+    </form>
+</div>
 
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="shopModel, iStat : ${allItems}">
+            <th scope="row" th:text="${shopModel.item}">1</th>
+            <td th:text="${shopModel.price}">number</td>
 
+            <td><a href="" th:href="@{/delete/{id}(id=${shopModel.id})}" class="btn btn-danger">Delete</a></td>
+            <td><a href="" th:href="@{/showItem/{id}(id=${shopModel.id})}" class="btn btn-warning">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+```
+
+Create "update.html" under "src/resources/templates"
+
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ShopAPP</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</head>
+<body> 
+
+<div class="container"><br/>
+    <div class="alert alert-success">
+        <strong>Update Item's Price</strong>
+    </div>
+</div>
+
+<div class="container">
+    <form th:action="@{/updateItem}" method="post" th:object="${shopModel}">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input class="form-control" type="text" required th:field="*{item}" placeholder="Enter Item" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="name">Price</label>
+                    <input class="form-control" type="number" required th:field="*{price}" placeholder="Enter Item">
+                </div>
+                <br>
+				<button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+
+</body>
+</html>
+```
+
+## Step 3: Install PostgreSQL Database
+ 
+ [PostgreSQL Download](https://www.postgresql.org/) and installation <br>
+ Create user account <br>
+ Create database, name: postgres <br>
+ Connection configuration: host:localhost, port:1234 <br>
+ 
+## Step 4: Build Application
+
+To connect PostgreSQL, type database details in "application.properties" under "src/main/resources" as following
+
+```Java
+# Postgres database, account
+spring.datasource.url = jdbc:postgresql://localhost:1234/postgres
+spring.datasource.username  = postgres
+spring.datasource.password  = 1234
+server.port=8080
+
+#spring.datasource.driver-class-name=org.postgresql.Driver
+# Keep the connection alive if idle for a long time (needed in production)
+spring.datasource.testWhileIdle=true
+spring.datasource.validationQuery=SELECT 1
+# ===============================
+# = JPA / HIBERNATE
+# ===============================
+# Show or not log for each sql query
+spring.jpa.show-sql=true
+# Hibernate ddl auto (create, create-drop, update): with "create-drop" the database
+# schema will be automatically created afresh for every start of application
+spring.jpa.hibernate.ddl-auto=create-drop
+
+# Naming strategy
+#spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+#spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+# Allows Hibernate to generate SQL optimized for a particular DBMS
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+```
+Right click project on Eclipse and select "Run As" then choose "4 Maven build"<br>
+In the "main" tab, type "spring-boot:run" in "Goals"<br>
+In the "JRE" tab, type "-Dfork=false" in "VM Arguments". So, we can stop Tomcat in Eclipse<br>
+Click on "Apply" then "Run"<br>
+
+## Step 5: Test
+
+- start http:localhost:8080 or http:localhost:8080/index
+- Add the first item
+- Add the second item
+- Update the second item
+- Delete the second item
+- Delete the first item
 
 
 
