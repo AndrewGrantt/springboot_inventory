@@ -50,6 +50,7 @@ Add the following Dependencies
 - PostgreSQL Driver: required to connect with PostgreSQL database
 - Thymeleaf Driver: Thymeleaf is a Java-based library provides a good support for XHTML/HTML5 in web applications
 
+<img width="1219" alt="Screenshot1" src="https://user-images.githubusercontent.com/48862763/151650813-c310bf0b-517a-49fc-80ff-fedfa662ed81.png">
 
 
 
