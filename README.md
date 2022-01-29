@@ -397,10 +397,25 @@ Click on "Apply" then "Run"<br>
 <a href="" th:href="@{/showItem/{id}(id=${shopModel.id})}" class="btn btn-warning">Update</a>
 ```
 - @GetMapping(value="/showItem/{pid}") in ShopController class will handle the request
-- 
-- Delete the first item
+- "model.addAttribute("shopModel", cur)" to bind data to view(html)
+- In "update.html", data will be handled by
+```html
+<form th:action="@{/updateItem}" method="post" th:object="${shopModel}">
+```
+- @PostMapping(value="/updateItem") will process data update
+- ModelAttribute("shopModel") shopModel smodel is the data object from html 
 
+<img width="1056" alt="Screenshot6" src="https://user-images.githubusercontent.com/48862763/151676879-72f67e1a-2cef-44e1-8f2e-24b1aac98e20.png">
 
+### Delete item 
+
+- Click on "Delete" button, action was handeled by
+```html
+<a href="" th:href="@{/delete/{id}(id=${shopModel.id})}" class="btn btn-danger">Delete</a>
+```
+- In controller, action was handled by @GetMapping(value="/delete/{pid}"
+
+<img width="1218" alt="Screenshot7" src="https://user-images.githubusercontent.com/48862763/151677021-7bbd1bf6-fc5d-47c2-be48-a65bb4576aea.png">
 
 
 
