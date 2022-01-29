@@ -13,15 +13,15 @@ WebJars are client side dependencies packaged into JAR files, add following depe
 
 ```xml
 <dependency>
-		<groupId>org.webjars</groupId>
-		<artifactId>bootstrap</artifactId>
-		<version>5.1.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>jquery</artifactId>
-			<version>3.6.0</version>
-		</dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>bootstrap</artifactId>
+	<version>5.1.3</version>
+</dependency>
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>jquery</artifactId>
+	<version>3.6.0</version>
+</dependency>
 ```
 
 ## Lombok installation in Eclipse
@@ -30,4 +30,33 @@ Lombok is a library that facilitates many tedious tasks and reduces Java source 
 2. Type "java -jar lombok-1.18.4.jar" in concole
 3. Installation finish, then restart Eclipse
 4. Project should be able to use @Data annotation now
+
+
+# Step-By-Step Procedures
+
+## Step 1: Create Spring project from Spring Intializr
+Go to the [Spring Initializer](https://start.spring.io/)
+- Choose "Maven Project", Language "Java" and Spring Boot version "2.6.3"
+- Group: type "shop"
+- Artifact: type “shopApp”
+- Name: type “shopApp”
+- Description: type any description
+- Choose “Jar”, it will include embedded Tomcat server provided by Spring Boot
+- Choose Java SDK 11
+
+Add the following Dependencies
+- Spring Web: required for RESTful web applications
+- Spring Data JPA: required to access the data from the database. JPA (Java Persistence API) 
+- PostgreSQL Driver: required to connect with PostgreSQL database
+- Thymeleaf Driver: Thymeleaf is a Java-based library provides a good support for XHTML/HTML5 in web applications
+
+
+
+
+
+
+
+
+
+
 
