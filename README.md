@@ -363,16 +363,34 @@ Click on "Apply" then "Run"<br>
 
 ## Step 5: Test
 
-- Start from http:localhost:8080 or http:localhost:8080/index
-	- Has @GetMapping(value="/") redirect to "redirect:/index" in ShopControll class, so both link are actually point to @GetMapping(value="/index")
-	- In @GetMapping(value="/index"), use "model.addAttribute" to bind data to view(html)
-	- Screenshot as following
+### Start from http:localhost:8080 or http:localhost:8080/index
+- Has @GetMapping(value="/") redirect to "redirect:/index" in ShopControll class, so both link are actually point to @GetMapping(value="/index")
+- In @GetMapping(value="/index"), use "model.addAttribute" to bind data to view(html)
+- Screenshot, there is no items when first time login
+
 <img width="1374" alt="Screenshot3" src="https://user-images.githubusercontent.com/48862763/151665774-e0141d40-2adc-4de5-aa83-fea6c73cc15d.png">
 
-- Add the first item
+- In index.html display all existing items by Thymeleaf expression
+```html
+<tr th:each="shopModel, iStat : ${allItems}">
+    <th scope="row" th:text="${shopModel.item}">1</th>
+    <td th:text="${shopModel.price}">number</td>
 
-- Add the second item
-- Update the second item
+    <td><a href="" th:href="@{/delete/{id}(id=${shopModel.id})}" class="btn btn-danger">Delete</a></td>
+    <td><a href="" th:href="@{/showItem/{id}(id=${shopModel.id})}" class="btn btn-warning">Update</a></td>
+</tr>
+```
+	
+### Add the first and second items
+- Click "Add One Item" button, form was handeled by <form th:action="@{/add}" method="post" th:object="${shopModel}">
+- @PostMapping("/add") will process info and save it in the database and redirect to index page
+- Screenshot, 2 items saved
+
+<img width="1215" alt="Screenshot5" src="https://user-images.githubusercontent.com/48862763/151666481-80fc1ae6-1e88-4a85-b8c2-85618d93b4f3.png">
+
+### Add the first and second items
+	
+	
 - Delete the second item
 - Delete the first item
 
