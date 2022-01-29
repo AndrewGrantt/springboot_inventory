@@ -382,16 +382,22 @@ Click on "Apply" then "Run"<br>
 ```
 	
 ### Add the first and second items
-- Click "Add One Item" button, form was handeled by <form th:action="@{/add}" method="post" th:object="${shopModel}">
+- Click on "Add One Item" button, action was handeled by 
+```html
+<form th:action="@{/add}" method="post" th:object="${shopModel}">
+```
 - @PostMapping("/add") will process info and save it in the database and redirect to index page
 - Screenshot, 2 items saved
 
 <img width="1215" alt="Screenshot5" src="https://user-images.githubusercontent.com/48862763/151666481-80fc1ae6-1e88-4a85-b8c2-85618d93b4f3.png">
 
-### Add the first and second items
-	
-	
-- Delete the second item
+### Update the second item	
+- Click on "Update" button of second item, action was handeled by
+```html
+<a href="" th:href="@{/showItem/{id}(id=${shopModel.id})}" class="btn btn-warning">Update</a>
+```
+- @GetMapping(value="/showItem/{pid}") in ShopController class will handle the request
+- 
 - Delete the first item
 
 
