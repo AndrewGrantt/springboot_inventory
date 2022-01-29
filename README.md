@@ -363,8 +363,14 @@ Click on "Apply" then "Run"<br>
 
 ## Step 5: Test
 
-- start http:localhost:8080 or http:localhost:8080/index
+- Start from http:localhost:8080 or http:localhost:8080/index
+	- Has @GetMapping(value="/") redirect to "redirect:/index" in ShopControll class, so both link are actually point to @GetMapping(value="/index")
+	- In @GetMapping(value="/index"), use "model.addAttribute" to bind data to view(html)
+	- Screenshot as following
+<img width="1374" alt="Screenshot3" src="https://user-images.githubusercontent.com/48862763/151665774-e0141d40-2adc-4de5-aa83-fea6c73cc15d.png">
+
 - Add the first item
+
 - Add the second item
 - Update the second item
 - Delete the second item
