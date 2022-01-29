@@ -6,24 +6,6 @@
 4. Eclipse 2021-12
 6. Java 11
 
-## Client Library WebJars
-WebJars are client side dependencies packaged into JAR files, add following dependency
-1. WebJars bootstrap 5.1.3
-2. WebJars jquery 3.6.0
-
-```xml
-<dependency>
-	<groupId>org.webjars</groupId>
-	<artifactId>bootstrap</artifactId>
-	<version>5.1.3</version>
-</dependency>
-<dependency>
-	<groupId>org.webjars</groupId>
-	<artifactId>jquery</artifactId>
-	<version>3.6.0</version>
-</dependency>
-```
-
 ## Lombok installation in Eclipse
 Lombok is a library that facilitates many tedious tasks and reduces Java source code verbosity<br>
 1. Download Lombok jar file
@@ -54,6 +36,24 @@ Add the following Dependencies
 
 Click the "Generate" button at the bottom of the screen, this will generate a project Zip file <br>
 Then import project into Eclipse
+
+## Step 1.1: Inject WebJars in pom.xml
+WebJars are client side dependencies packaged into JAR files, add following dependency in pom.xml
+1. WebJars bootstrap 5.1.3
+2. WebJars jquery 3.6.0
+
+```xml
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>bootstrap</artifactId>
+	<version>5.1.3</version>
+</dependency>
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>jquery</artifactId>
+	<version>3.6.0</version>
+</dependency>
+```
 
 ## Step 2: Add sub-class to the project
  
